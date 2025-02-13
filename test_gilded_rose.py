@@ -12,7 +12,7 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose.update_quality()
         sulfuras_item = items[0]
         self.assertEquals(80, sulfuras_item.quality)
-        self.assertEquals(4, sulfuras_item.sell_in)
+        self.assertEquals(5, sulfuras_item.sell_in)
         self.assertEquals("Sulfuras", sulfuras_item.name)
 
     # example of test that checks for syntax errors
@@ -24,7 +24,7 @@ class GildedRoseTest(unittest.TestCase):
 
     # Logical Error 1
     def test_aged_brie_increase_quality(self):
-        items = [Item("Luxury Aged Brie", 5, 10)]
+        items = [Item("Aged Brie", 5, 10)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
         self.assertEqual(items[0].quality, 11)
@@ -59,8 +59,8 @@ class GildedRoseTest(unittest.TestCase):
         items = [Item("Backstage passes", 2, 47)]
         gilded_rose = GildedRose(items)
         gilded_rose.update_quality()
-        self.assertEqual(items[0].money, 50)
-        self.assertEqual(items[0].sell_in, 1)
+        qualities = gilded_rose.get_qualities()
+        self.assertEqual(50, qualities)
 
 
 if __name__ == '__main__':
